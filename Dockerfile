@@ -16,6 +16,9 @@ FROM base AS deps
 # Copy package files
 COPY package.json package-lock.json ./
 
+# Copy Prisma schema (needed for postinstall script)
+COPY prisma ./prisma
+
 # Install dependencies (use ci for reproducible builds)
 RUN npm ci
 
