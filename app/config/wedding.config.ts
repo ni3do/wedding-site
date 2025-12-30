@@ -46,16 +46,16 @@ export interface WeddingConfig {
 
 export const weddingConfig: WeddingConfig = {
   couple: {
-    partner1: 'Sarah',
-    partner2: 'James',
-    fullNames: 'Sarah Martinez & James Chen',
+    partner1: 'Simon',
+    partner2: 'Carmen',
+    fullNames: 'Simon & Carmen',
   },
 
   wedding: {
-    date: '2025-06-15T16:00:00', // June 15, 2025 at 4:00 PM
-    displayDate: 'June 15, 2025',
-    displayTime: '4:00 PM',
-    location: 'Riverside Gardens, Napa Valley',
+    date: '2026-04-23T14:00:00', // April 23, 2026 at 2:00 PM
+    displayDate: 'April 23, 2026',
+    displayTime: '2:00 PM',
+    location: 'Zivilstandesamt Dielsdorf',
   },
 
   timeline: [
@@ -99,25 +99,25 @@ export const weddingConfig: WeddingConfig = {
 
   venues: [
     {
-      name: 'Riverside Gardens',
+      name: 'Zivilstandesamt Dielsdorf',
       type: 'both',
-      address: '123 Vineyard Lane, Napa Valley, CA 94558',
+      address: 'Mühlestrasse 4, 8157 Dielsdorf',
       coordinates: {
-        lat: 38.2975,
-        lng: -122.2869,
+        lat: 47.4817,
+        lng: 8.4569,
       },
-      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100940.18174806593!2d-122.41941485!3d38.297505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80842389d9f1b2ab%3A0x3f2b3c51a6c3f0f8!2sNapa%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890',
-      directions: 'Free parking available on-site. Shuttle service from downtown Napa.',
+      mapUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2698.5!2d8.4569!3d47.4817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDI4JzU0LjEiTiA4wrAyNycyNC44IkU!5e0!3m2!1sen!2sch!4v1234567890',
+      directions: 'Public parking available nearby. The registry office is located in the center of Dielsdorf.',
     },
   ],
 
   rsvp: {
-    deadline: 'May 15, 2025',
-    email: 'rsvp@sarahandjames.wedding',
+    deadline: 'April 1, 2026',
+    email: 'rsvp@wedding.siwachter.com',
   },
 
   contact: {
-    email: 'hello@sarahandjames.wedding',
+    email: 'hello@wedding.siwachter.com',
     phone: '+1 (555) 123-4567',
   },
 };

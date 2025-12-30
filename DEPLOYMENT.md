@@ -320,7 +320,7 @@ Configure in Dokploy or set up a cron job:
 1. Go to your application in Dokploy
 2. Navigate to **Domains** section
 3. Click **Add Domain**
-4. Enter your domain: `sarahandjames.wedding`
+4. Enter your domain: `wedding.siwachter.com`
 5. Enable **HTTPS** (Let's Encrypt)
 6. Save configuration
 
@@ -340,14 +340,14 @@ TTL: 3600
 ```
 Type: CNAME
 Name: www
-Value: sarahandjames.wedding
+Value: wedding.siwachter.com
 TTL: 3600
 ```
 
 ### Step 3: Wait for DNS Propagation
 
 - DNS changes can take 1-48 hours
-- Check status: `dig sarahandjames.wedding`
+- Check status: `dig wedding.siwachter.com`
 - Or use: https://dnschecker.org
 
 ### Step 4: Enable SSL Certificate
@@ -356,7 +356,7 @@ Dokploy will automatically provision an SSL certificate via Let's Encrypt once D
 
 Verify HTTPS:
 ```bash
-curl -I https://sarahandjames.wedding
+curl -I https://wedding.siwachter.com
 ```
 
 ---

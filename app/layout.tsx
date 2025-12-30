@@ -17,11 +17,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Sarah & James - June 15, 2025",
-  description: "Join us in celebrating our wedding day at Riverside Gardens, Napa Valley",
+  title: "Simon & Carmen - April 23, 2026",
+  description: "Join us in celebrating our wedding day at Zivilstandesamt Dielsdorf",
   openGraph: {
-    title: "Sarah & James Wedding",
-    description: "Join us in celebrating our wedding day on June 15, 2025",
+    title: "Simon & Carmen Wedding",
+    description: "Join us in celebrating our wedding day on April 23, 2026",
     type: "website",
   },
 };
