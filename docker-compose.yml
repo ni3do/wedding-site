@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: wedding-postgres
+    environment:
+      POSTGRES_DB: wedding_db
+      POSTGRES_USER: wedding_user
+      POSTGRES_PASSWORD: wedding_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wedding_user -d wedding_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - wedding-network
+
+  # pgAdmin for database management
+  postgres-admin:
+    image: dpage/pgadmin4:latest
+    container_name: wedding-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@wedding.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - wedding-network
+
+  # Next.js Wedding Site
+  wedding-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      cache_from:
+        - wedding-site:latest
+    image: wedding-site:latest
+    container_name: wedding-site
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - NEXT_TELEMETRY_DISABLED=1
+      - DATABASE_URL=postgresql://wedding_user:wedding_password@postgres:5432/wedding_db
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000', (res) => { process.exit(res.statusCode === 200 ? 0 : 1); })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - wedding-network
+
+# Persistent volumes
+volumes:
+  postgres_data:
+    driver: local
+
+# Network for service communication
+networks:
+  wedding-network:
+    name: wedding-site-network
+    driver: bridge
